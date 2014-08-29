@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2014, Martin Goellnitz
  * All rights reserved.
@@ -36,7 +35,8 @@ import org.gradle.api.file.RelativePath
 defaultTasks 'clean', 'build', 'distZip'
 
 version = '0.1-SNAPSHOT'
-ext.cm_version='7.0.29-78'
+def cm_version='7.0.29-78'
+def consider_menusite = true
 
 buildscript {
   repositories {
@@ -51,6 +51,7 @@ apply plugin: 'application'
 apply plugin: 'download-task'
 
 mainClassName='ignore'
+jar.enabled = false
 
 /**
  *  coremediaUsername and coremediaPassword must be specified in your personal
@@ -101,32 +102,32 @@ distZip {
     } // if
   } // while
 
-  def examplesFile = new File("$projectDir/cap-examples.jar") 
-  if ((!examplesFile.exists()) && project.hasProperty("coremediaUsername")) {
-    download {
-      src 'https://releases.coremedia.com/cmv/16/cms/5.2.1456/cap-examples.jar'
-      dest "$projectDir"
-      onlyIfNewer true
-      username coremediaUsername
-      password coremediaPassword
-    }
-  } // if
+  if (consider_menusite) {
+    def examplesFile = new File("$projectDir/cap-examples.jar") 
+    if ((!examplesFile.exists()) && project.hasProperty("coremediaUsername")) {
+      download {
+        src 'https://releases.coremedia.com/cmv/16/cms/5.2.1456/cap-examples.jar'
+        dest "$projectDir"
+        onlyIfNewer true
+        username coremediaUsername
+        password coremediaPassword
+      }
+    } // if
   
-  /** 
-   * this adds the good old menusite to the tools to be able to import the provided content! 
-   */
-  /*
-  if (examplesFile.exists()) {
-  FileTree cmexamples = zipTree("$projectDir/cap-examples.jar")
-  into('') {
-  from cmexamples
-  include 'menusite/data/**'
-  eachFile { FileCopyDetails fcp ->
-  def segments = fcp.relativePath.segments
-  def pathsegments = segments[2..-1] as String[]
-  fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
+    /** 
+     * this adds the good old menusite to the tools to be able to import the provided content! 
+     */
+    if (examplesFile.exists()) {
+      FileTree cmexamples = zipTree("$projectDir/cap-examples.jar")
+      into('') {
+        from cmexamples
+        include 'cae/menusite/misc/data/**'
+        eachFile { FileCopyDetails fcp ->
+          def segments = fcp.relativePath.segments
+          def pathsegments = segments[4..-1] as String[]
+          fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
+        }
+      }
+    }
   }
-  }
-  }
-   */
 }
