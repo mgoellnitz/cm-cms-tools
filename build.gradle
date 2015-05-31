@@ -1,30 +1,30 @@
 /**
- * Copyright (c) 2014, Martin Goellnitz
+ * Copyright (c) 2014-2015, Martin Goellnitz
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, 
+ * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, 
+ * 1. Redistributions of source code must retain the above copyright notice,
  *    this list of conditions and the following disclaimer.
  *
- * 2. Redistributions in binary form must reproduce the above copyright notice, 
- *    this list of conditions and the following disclaimer in the documentation 
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
  *
- * 3. Neither the name of the copyright holder nor the names of its contributors 
- *    may be used to endorse or promote products derived from this software 
+ * 3. Neither the name of the copyright holder nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
  *    without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
- * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import org.gradle.api.Project
@@ -35,7 +35,7 @@ import org.gradle.api.file.RelativePath
 defaultTasks 'clean', 'build', 'distZip'
 
 version = '0.1-SNAPSHOT'
-def cm_version='7.0.31-35'
+def cm_version='7.1.8-16'
 def consider_menusite = true
 
 buildscript {
@@ -60,7 +60,7 @@ jar.enabled = false
  */
 repositories {
   mavenCentral()
-  maven { url "https://repository.coremedia.com/nexus/content/groups/cms" 
+  maven { url "https://repository.coremedia.com/nexus/content/groups/cms"
     credentials {
       username coremediaUsername
       password coremediaPassword
@@ -79,8 +79,8 @@ dependencies {
   runtime "com.coremedia.cms:content-management-server-tools:$cm_version"
   runtime "com.coremedia.cms:serverimportexport:$cm_version@jar"
   runtime "ch.qos.logback:logback-classic:1.1.2"
-  
-  runtime "mysql:mysql-connector-java:5.1.31"
+
+  runtime "mysql:mysql-connector-java:5.1.35"
 }
 
 distZip {
@@ -103,7 +103,7 @@ distZip {
   } // for
 
   if (consider_menusite) {
-    def examplesFile = new File("$projectDir/cap-examples.jar") 
+    def examplesFile = new File("$projectDir/cap-examples.jar")
     if ((!examplesFile.exists()) && project.hasProperty("coremediaUsername")) {
       download {
         src 'https://releases.coremedia.com/cmv/16/cms/5.2.1456/cap-examples.jar'
@@ -113,9 +113,9 @@ distZip {
         password coremediaPassword
       }
     } // if
-  
-    /** 
-     * this adds the good old menusite to the tools to be able to import the provided content! 
+
+    /**
+     * this adds the good old menusite to the tools to be able to import the provided content!
      */
     if (examplesFile.exists()) {
       FileTree cmexamples = zipTree("$projectDir/cap-examples.jar")

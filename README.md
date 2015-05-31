@@ -34,7 +34,7 @@ The resulting zip file needs to be extracted and results in the usual CoreMedia
 service tools layout. Read the fine manuals at http://documentation.coremedia.com/
 for details.
 
-One defect for now is, that the neede libraries still show up in the wrong place.
+One defect for now is, that the needed libraries still show up in the wrong place.
 
 ```
 unzip distributions/cm-cms-tools...zip
