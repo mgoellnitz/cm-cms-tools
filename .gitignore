@@ -1,7 +1,5 @@
 /.gradle
-/.nb-gradle/private/
-/.nb-gradle/profiles/private/
+/.nb-gradle/
 /build/
 /private
 cap-examples.jar
-
