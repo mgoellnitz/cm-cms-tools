@@ -1,12 +1,11 @@
-CoreMedia Content Management Server Tools
-=========================================
+# CoreMedia Content Management Server Tools
 
 Demo gradle script to assemble plain, uncustomized CoreMedia Content Management 
 Server Tools in a stripped down variant of how the original Maven based workspace 
 layout from CoreMedia does it.
 
-Prerequisites
--------------
+
+## Prerequisites
 
 - Access to the CoreMedia Maven artifact repositories
 
@@ -14,8 +13,8 @@ Prerequisites
 
 - Database parameters of that server to be able to use all tools
 
-Usage
------
+
+## Usage
 
 Customizing
 
