@@ -79,7 +79,7 @@ dependencies {
   zip "com.coremedia.cms:content-management-server-config:$cm_version@zip"
   runtime "com.coremedia.cms:content-management-server-tools:$cm_version"
   runtime "com.coremedia.cms:serverimportexport:$cm_version@jar"
-  runtime "ch.qos.logback:logback-classic:1.1.8"
+  runtime "ch.qos.logback:logback-classic:1.2.1"
 
   runtime "mysql:mysql-connector-java:6.0.6"
 }
