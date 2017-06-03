@@ -1,8 +1,20 @@
 # CoreMedia Content Management Server Tools
 
-Demo gradle script to assemble plain, uncustomized CoreMedia Content Management 
-Server Tools in a stripped down variant of how the original Maven based workspace 
-layout from CoreMedia does it.
+CoreMedia Content Management Server Tools assembled with Gradle to illustrate,
+what a Gradle based CoreMedia workspace might look like.
+
+This demo gradle script assembles plain, uncustomized CoreMedia Content 
+Management  Server Tools in a stripped down variant of how the original Maven 
+based workspace layout from CoreMedia does it.
+
+It is meant as a hint that a migration from the Apache Maven build system (not 
+its dependency management and repositories) would be an advantage for 
+readability and maintence of CoreMedia workspaces.
+
+This repository in itself is feedback about the topic, but feel free to send
+any comment e.g. via the [issues][issues] section at GitHub.
+
+Find mirrors of this git repository at [gitlab][gitlab] and [github][github].
 
 
 ## Prerequisites
@@ -40,3 +52,8 @@ unzip distributions/cm-cms-tools...zip
 rmdir lib
 mv cm*/lib .
 ```
+
+
+[issues]: https://github.com/mgoellnitz/cm-cms-tools/issues
+[github]: https://github.com/mgoellnitz/cm-cms-tools
+[gitlab]: https://gitlab.com/mgoellnitz/cm-cms-tools
