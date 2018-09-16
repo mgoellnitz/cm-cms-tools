@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2017, Martin Goellnitz
+ * Copyright (c) 2014-2018, Martin Goellnitz
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -79,7 +79,7 @@ dependencies {
   zip "com.coremedia.cms:content-management-server-config:$cm_version@zip"
   runtime "com.coremedia.cms:content-management-server-tools:$cm_version"
   runtime "com.coremedia.cms:serverimportexport:$cm_version@jar"
-  runtime "ch.qos.logback:logback-classic:1.2.2"
+  runtime "ch.qos.logback:logback-classic:1.2.3"
 
   runtime "mysql:mysql-connector-java:6.0.6"
 }
